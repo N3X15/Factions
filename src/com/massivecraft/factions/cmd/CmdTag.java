@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.massivecraft.factions.Conf;
 import com.massivecraft.factions.Faction;
 import com.massivecraft.factions.Factions;
-import com.massivecraft.factions.integration.SpoutFeatures;
+//import com.massivecraft.factions.integration.SpoutFeatures;
 import com.massivecraft.factions.struct.Permission;
 import com.massivecraft.factions.util.MiscUtil;
 
@@ -65,10 +65,10 @@ public class CmdTag extends FCommand
 			faction.msg("<i>The faction %s<i> changed their name to %s.", fme.getColorTo(faction)+oldtag, myFaction.getTag(faction));
 		}
 
-		if (Conf.spoutFactionTagsOverNames)
-		{
-			SpoutFeatures.updateAppearances(myFaction);
-		}
+//		if (Conf.spoutFactionTagsOverNames)
+//		{
+//			SpoutFeatures.updateAppearances(myFaction);
+//		}
 	}
 	
 }

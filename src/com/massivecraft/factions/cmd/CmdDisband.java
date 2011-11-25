@@ -1,12 +1,11 @@
 package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.Conf;
-import com.massivecraft.factions.integration.Econ;
+import com.massivecraft.factions.FPlayer;
 import com.massivecraft.factions.FPlayers;
 import com.massivecraft.factions.Faction;
 import com.massivecraft.factions.P;
-import com.massivecraft.factions.FPlayer;
-import com.massivecraft.factions.integration.SpoutFeatures;
+import com.massivecraft.factions.integration.Econ;
 import com.massivecraft.factions.struct.FFlag;
 import com.massivecraft.factions.struct.FPerm;
 import com.massivecraft.factions.struct.Permission;
@@ -64,8 +63,8 @@ public class CmdDisband extends FCommand
 		if (Econ.shouldBeUsed())
 		{
 			//Give all the faction's money to the disbander
-			double amount = faction.getAccount().balance();
-			fme.getAccount().add(amount);
+			double amount = faction.getAccount().getHoldings().balance();
+			fme.getAccount().getHoldings().add(amount);
 			faction.getAccount().remove();
 			
 			if (amount > 0.0)
@@ -78,6 +77,6 @@ public class CmdDisband extends FCommand
 		
 		faction.detach();
 
-		SpoutFeatures.updateAppearances();
+//		SpoutFeatures.updateAppearances();
 	}
 }

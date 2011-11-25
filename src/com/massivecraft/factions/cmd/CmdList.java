@@ -46,7 +46,6 @@ public class CmdList extends FCommand
 		
 		// Sort by total followers first
 		Collections.sort(factionList, new Comparator<Faction>(){
-			@Override
 			public int compare(Faction f1, Faction f2) {
 				if (f1.getFPlayers().size() < f2.getFPlayers().size())
 					return 1;
@@ -58,7 +57,6 @@ public class CmdList extends FCommand
 
 		// Then sort by how many members are online now
 		Collections.sort(factionList, new Comparator<Faction>(){
-			@Override
 			public int compare(Faction f1, Faction f2) {
 				if (f1.getFPlayersWhereOnline(true).size() < f2.getFPlayersWhereOnline(true).size())
 					return 1;

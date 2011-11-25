@@ -21,7 +21,6 @@ import com.massivecraft.factions.adapters.LocationTypeAdapter;
 import com.massivecraft.factions.adapters.RelTypeAdapter;
 import com.massivecraft.factions.cmd.*;
 import com.massivecraft.factions.integration.Econ;
-import com.massivecraft.factions.integration.SpoutFeatures;
 import com.massivecraft.factions.integration.Worldguard;
 import com.massivecraft.factions.listeners.FactionsBlockListener;
 import com.massivecraft.factions.listeners.FactionsChatEarlyListener;
@@ -35,11 +34,8 @@ import com.massivecraft.factions.struct.Rel;
 import com.massivecraft.factions.zcore.MPlugin;
 
 import com.nijiko.permissions.PermissionHandler;
-import com.earth2me.essentials.chat.EssentialsChat;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.massivecraft.factions.integration.EssentialsFeatures;
-import com.massivecraft.factions.integration.capi.CapiFeatures;
 
 public class P extends MPlugin
 {
@@ -75,10 +71,8 @@ public class P extends MPlugin
 	
 	
 	public static PermissionHandler Permissions;
-	private static EssentialsChat essChat;
 	
 	
-	@Override
 	public void onEnable()
 	{
 		if ( ! preEnable()) return;
@@ -95,11 +89,10 @@ public class P extends MPlugin
 		this.getBaseCommands().add(cmdBase);
 		
 		//setupPermissions();
-		integrateEssentialsChat();
 		setupSpout(this);
 		Econ.doSetup();
 		Econ.oldMoneyDoTransfer();
-		CapiFeatures.setup();
+		//CapiFeatures.setup();
 		
 		if(Conf.worldGuardChecking)
 		{
@@ -167,7 +160,6 @@ public class P extends MPlugin
 	{
 		Board.save();
 		Conf.save();
-		unhookEssentialsChat();
 		super.onDisable();
 	}
 	
@@ -188,28 +180,7 @@ public class P extends MPlugin
 
 		if (test != null && test.isEnabled())
 		{
-			SpoutFeatures.setAvailable(true, test.getDescription().getFullName());
-		}
-	}
-
-	private void integrateEssentialsChat()
-	{
-		if (essChat != null) return;
-
-		Plugin test = this.getServer().getPluginManager().getPlugin("EssentialsChat");
-
-		if (test != null && test.isEnabled())
-		{
-			essChat = (EssentialsChat)test;
-			EssentialsFeatures.integrateChat(essChat);
-		}
-	}
-	
-	private void unhookEssentialsChat()
-	{
-		if (essChat != null)
-		{
-			EssentialsFeatures.unhookChat();
+//			SpoutFeatures.setAvailable(true, test.getDescription().getFullName());
 		}
 	}
 

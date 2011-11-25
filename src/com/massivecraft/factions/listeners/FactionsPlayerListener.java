@@ -1,8 +1,9 @@
 package com.massivecraft.factions.listeners;
 
-import java.util.logging.Logger;
 import java.util.Iterator;
 import java.util.UnknownFormatConversionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -29,11 +30,8 @@ import com.massivecraft.factions.FPlayer;
 import com.massivecraft.factions.FPlayers;
 import com.massivecraft.factions.Faction;
 import com.massivecraft.factions.P;
-import com.massivecraft.factions.integration.SpoutFeatures;
 import com.massivecraft.factions.struct.FPerm;
 import com.massivecraft.factions.struct.Rel;
-
-import java.util.logging.Level;
 
 
 
@@ -153,7 +151,7 @@ public class FactionsPlayerListener extends PlayerListener
 		FPlayers.i.autoLeaveOnInactivityRoutine();
 		FPlayers.i.autoLeaveOnInactivityRoutine();
 
-		SpoutFeatures.updateAppearancesShortly(event.getPlayer());
+//		SpoutFeatures.updateAppearancesShortly(event.getPlayer());
 	}
 	
     @Override
@@ -162,7 +160,7 @@ public class FactionsPlayerListener extends PlayerListener
 		// Make sure player's power is up to date when they log off.
 		FPlayer me = FPlayers.i.get(event.getPlayer());
 		me.getPower();
-		SpoutFeatures.playerDisconnect(me);
+//		SpoutFeatures.playerDisconnect(me);
 	}
 	
 	@Override
@@ -414,7 +412,7 @@ public class FactionsPlayerListener extends PlayerListener
 			return;
 		}
 
-		SpoutFeatures.playerDisconnect(badGuy);
+//		SpoutFeatures.playerDisconnect(badGuy);
 
 		// if player was banned (not just kicked), get rid of their stored info
 		if (event.getReason().equals("Banned by admin."))

@@ -2,11 +2,10 @@ package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.Board;
 import com.massivecraft.factions.Conf;
-import com.massivecraft.factions.integration.Econ;
-import com.massivecraft.factions.integration.SpoutFeatures;
 import com.massivecraft.factions.FLocation;
 import com.massivecraft.factions.Faction;
 import com.massivecraft.factions.P;
+import com.massivecraft.factions.integration.Econ;
 import com.massivecraft.factions.struct.FPerm;
 import com.massivecraft.factions.struct.Permission;
 
@@ -53,7 +52,7 @@ public class CmdUnclaim extends FCommand
 		}
 
 		Board.removeAt(flocation);
-		SpoutFeatures.updateTerritoryDisplayLoc(flocation);
+		//SpoutFeatures.updateTerritoryDisplayLoc(flocation);
 		myFaction.msg("%s<i> unclaimed some land.", fme.describeTo(myFaction, true));
 
 		if (Conf.logLandUnclaims)

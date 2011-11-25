@@ -26,7 +26,6 @@ import com.massivecraft.factions.P;
 public class FLocToStringSetTypeAdapter implements JsonDeserializer<Map<FLocation, Set<String>>>, JsonSerializer<Map<FLocation, Set<String>>>
 {
 
-	@Override
 	public Map<FLocation, Set<String>> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException
 	{
 		try {
@@ -74,7 +73,6 @@ public class FLocToStringSetTypeAdapter implements JsonDeserializer<Map<FLocatio
 		}
 	}
 
-	@Override
 	public JsonElement serialize(Map<FLocation, Set<String>> src, Type typeOfSrc, JsonSerializationContext context)
 	{
 		JsonObject obj = new JsonObject();

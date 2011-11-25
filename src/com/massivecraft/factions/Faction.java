@@ -7,6 +7,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+import com.iConomy.iConomy;
+import com.iConomy.system.Account;
 import com.massivecraft.factions.iface.EconomyParticipator;
 import com.massivecraft.factions.iface.RelationParticipator;
 import com.massivecraft.factions.integration.Econ;
@@ -15,7 +17,6 @@ import com.massivecraft.factions.struct.FPerm;
 import com.massivecraft.factions.struct.Rel;
 import com.massivecraft.factions.util.*;
 import com.massivecraft.factions.zcore.persist.Entity;
-import com.nijikokun.register.payment.Method.MethodAccount;
 
 
 public class Faction extends Entity implements EconomyParticipator
@@ -82,23 +83,11 @@ public class Faction extends Entity implements EconomyParticipator
 	// Bank functions
 	public double money;
 	public String getAccountId() { return "faction-"+this.getId(); }
-	public MethodAccount getAccount()
+	public Account getAccount()
 	{
 		String aid = this.getAccountId();
-
-		// We need to override the default money given to players.
-		if ( ! Econ.getMethod().hasAccount(aid))
-		{
-			if ( ! Econ.getMethod().createAccount(aid))
-			{
-				P.p.log(Level.SEVERE, "Error creating faction bank account through Register: "+aid);
-//				return null;
-			}
-			MethodAccount acc = Econ.getMethod().getAccount(aid);
-			acc.set(0); 
-		}
 		
-		return Econ.getMethod().getAccount(aid);
+		return iConomy.getAccount(aid);
 	}
 	
 	// FIELDS: Flag management
@@ -201,31 +190,26 @@ public class Faction extends Entity implements EconomyParticipator
 	// Relation and relation colors
 	// -------------------------------
 	
-	@Override
 	public String describeTo(RelationParticipator observer, boolean ucfirst)
 	{
 		return RelationUtil.describeThatToMe(this, observer, ucfirst);
 	}
 	
-	@Override
 	public String describeTo(RelationParticipator observer)
 	{
 		return RelationUtil.describeThatToMe(this, observer);
 	}
 	
-	@Override
 	public Rel getRelationTo(RelationParticipator observer)
 	{
 		return RelationUtil.getRelationOfThatToMe(this, observer);
 	}
 	
-	@Override
 	public Rel getRelationTo(RelationParticipator observer, boolean ignorePeaceful)
 	{
 		return RelationUtil.getRelationOfThatToMe(this, observer, ignorePeaceful);
 	}
 	
-	@Override
 	public ChatColor getColorTo(RelationParticipator observer)
 	{
 		return RelationUtil.getColorOfThatToMe(this, observer);
@@ -455,7 +439,7 @@ public class Faction extends Entity implements EconomyParticipator
 	{
 		if (Econ.shouldBeUsed())
 		{
-			Econ.getMethod().getAccount(getAccountId()).remove();
+			iConomy.getAccount(getAccountId()).remove();
 		}
 		
 		this.getAccountId();

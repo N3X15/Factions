@@ -1,12 +1,11 @@
 package com.massivecraft.factions.listeners;
 
-import org.bukkit.plugin.Plugin;
-import org.bukkit.event.server.ServerListener;
 import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.event.server.PluginEnableEvent;
+import org.bukkit.event.server.ServerListener;
+import org.bukkit.plugin.Plugin;
 
 import com.massivecraft.factions.P;
-import com.massivecraft.factions.integration.SpoutFeatures;
 
 
 public class FactionsServerListener extends ServerListener
@@ -23,7 +22,7 @@ public class FactionsServerListener extends ServerListener
 		String name = event.getPlugin().getDescription().getName();
 		if (name.equals("Spout"))
 		{
-			SpoutFeatures.setAvailable(false, "");
+//			SpoutFeatures.setAvailable(false, "");
 		}
 	}
 
@@ -34,7 +33,7 @@ public class FactionsServerListener extends ServerListener
 		String name = plug.getDescription().getName();
 		if (name.equals("Spout"))
 		{
-			SpoutFeatures.setAvailable(true, plug.getDescription().getFullName());
+//			SpoutFeatures.setAvailable(true, plug.getDescription().getFullName());
 		}
 	}
 }

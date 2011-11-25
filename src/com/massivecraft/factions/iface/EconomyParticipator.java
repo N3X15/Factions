@@ -1,10 +1,10 @@
 package com.massivecraft.factions.iface;
 
-import com.nijikokun.register.payment.Method.MethodAccount;
+import com.iConomy.system.Account;
 
 public interface EconomyParticipator extends RelationParticipator
 {
-	public MethodAccount getAccount();
+	public Account getAccount();
 	
 	public void msg(String str, Object... args);
 }
